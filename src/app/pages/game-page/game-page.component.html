@@ -1,0 +1,94 @@
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="game-bg">
+  <div class="game-topbar">
+    <div class="game-exit-btn" >         <a
+      routerLink="/">← EXIT TABLE</a></div>
+    <div class="game-topbar-label">
+      ROUND <span class="game-topbar-value">{{ state.round }}</span>
+    </div>
+    <div class="game-topbar-label">
+      SCORE <span class="game-topbar-value">{{ state.score }}</span>
+    </div>
+  </div>
+
+  <div class="deck-status">
+    <div class="deck-card">
+      <p class="deck-card-label">DRAW</p>
+      <p class="deck-card-value">{{ state.drawPile.length }}</p>
+    </div>
+    <div class="deck-card">
+      <p class="deck-card-label">DISCARD</p>
+      <p class="deck-card-value">{{ state.discardPile.length }}</p>
+    </div>
+    <div class="deck-card">
+      <p class="deck-card-label">RESHUFFLES</p>
+      <p class="deck-card-value">{{ state.reshuffleCount }}/{{ config.maxReshuffles }}</p>
+    </div>
+  </div>
+
+
+  <div class="hand-container">
+    <div *ngFor="let tile of state.currentHand" class="tile-card">
+      <div class="tile-glyph">{{ tile.glyph }}</div>
+    </div>
+  </div>
+
+
+  <div class="hand-total">
+    <span class="hand-total-label">HAND TOTAL </span>
+    <span class="hand-total-value">{{ currentTotal }}</span>
+  </div>
+  <div *ngIf="lastRound && !isOver" class="last-round-info">
+    {{ lastRound.total }} → {{ lastRound.nextTotal }} &nbsp;|&nbsp;
+    {{ lastRound.bet | uppercase }} &nbsp;|&nbsp;
+    {{ lastRound.result | uppercase }}
+  </div>
+  <div class="bet-buttons">
+    <button class="bet-btn" [disabled]="isOver" (click)="bet('lower')">
+      ▼ BET LOWER
+    </button>
+    <button class="bet-btn" [disabled]="isOver" (click)="bet('higher')">
+      ▲ BET HIGHER
+    </button>
+  </div>
+
+
+  <div class="history-section">
+    <div class="history-header">
+      <span class="history-title">HISTORY</span>
+      <span class="history-count">{{ state.history.length }} rounds</span>
+    </div>
+
+    <div *ngIf="state.history.length === 0" class="history-empty">
+      NO ROUNDS YET — PLACE YOUR FIRST BET
+    </div>
+
+    <div *ngFor="let round of state.history" class="history-row">
+      <span>ROUND {{ round.index }}</span>
+      <span>{{ round.total }} → {{ round.nextTotal }}</span>
+      <span [class]="'result-' + round.result">{{ round.result | uppercase }}</span>
+    </div>
+  </div>
+
+
+  <div *ngIf="isOver" style="position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 1000;">
+    <div class="game-over-box" style="width: 90%; max-width: 420px;">
+  
+      <h2 class="game-over-title">GAME OVER</h2>
+      <p class="game-over-stat">FINAL SCORE: <strong>{{ state.score }}</strong></p>
+      <p class="game-over-stat">ROUNDS PLAYED: <strong>{{ state.round - 1 }}</strong></p>
+  
+      <div *ngIf="canQualify" style="margin: 1.5rem 0;">
+        <input type="text" [(ngModel)]="name" placeholder="YOUR NAME" class="game-over-input" />
+        <button class="btn-primary" (click)="saveScore()">SAVE SCORE</button>
+      </div>
+  
+      <div class="game-over-actions">
+        <button class="btn-primary" (click)="handleNewGame()">NEW GAME</button>
+      </div>
+  
+    </div>
+  </div>
+
+</div>

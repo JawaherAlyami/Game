@@ -1,0 +1,44 @@
+<div class="flex gap-3">
+  <div
+    class="flex flex-col gap-1 px-5 py-3 bg-ink/40 border border-bone/10 rounded-md min-w-[110px]"
+  >
+    <span class="text-[10px] uppercase tracking-[0.3em] text-bone/40">
+      Draw
+    </span>
+
+    <span class="font-display text-2xl text-bone tabular-nums">
+      {{ draw }}
+    </span>
+  </div>
+
+  <div
+    class="flex flex-col gap-1 px-5 py-3 bg-ink/40 border border-bone/10 rounded-md min-w-[110px]"
+  >
+    <span class="text-[10px] uppercase tracking-[0.3em] text-bone/40">
+      Discard
+    </span>
+
+    <span class="font-display text-2xl text-bone tabular-nums">
+      {{ discard }}
+    </span>
+  </div>
+
+  <div
+    class="flex flex-col gap-1 px-5 py-3 bg-ink/40 border border-bone/10 rounded-md min-w-[110px]"
+  >
+    <span class="text-[10px] uppercase tracking-[0.3em] text-bone/40">
+      Reshuffles
+    </span>
+
+    <span class="font-display text-2xl text-bone tabular-nums">
+      {{ reshuffles }}/{{ maxReshuffles }}
+    </span>
+
+    <span
+      *ngIf="reshuffles === maxReshuffles - 1"
+      class="text-[10px] text-bone/40"
+    >
+      Final deck
+    </span>
+  </div>
+</div>

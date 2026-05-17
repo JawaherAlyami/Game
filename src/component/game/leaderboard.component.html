@@ -1,0 +1,40 @@
+<div class="w-full max-w-md">
+  <div class="flex items-baseline justify-between mb-4">
+    <h2 class="font-display text-3xl text-bone">
+      Top Five
+    </h2>
+    <span style="margin-left: 100px;"></span>
+    <span class="text-[10px] uppercase tracking-[0.3em] text-bone/90">
+      High Scores
+    </span>
+  </div>
+
+  <ol class="space-y-px">
+    <li
+      *ngFor="let entry of topFive; let i = index"
+      class="flex items-baseline gap-4 px-4 py-3 bg-ink/30 border-b border-bone/5 last:border-0"
+      style="background-color:var(--blush);"
+    >
+      <span class="font-display text-xl text-gold w-6 tabular-nums">
+        {{ i + 1 }}
+      </span>
+
+      <span class="flex-1 truncate text-bone">
+        {{ entry?.name || '—' }}
+      </span>
+
+      <span
+        *ngIf="entry"
+        class="text-xs text-bone/40 tabular-nums"
+      >
+        {{ entry.rounds }}R
+      </span>
+
+      <span
+        class="font-mono text-bone/80 tabular-nums w-16 text-right"
+      >
+        {{ entry?.score || '' }}
+      </span>
+    </li>
+  </ol>
+</div>

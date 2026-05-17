@@ -1,0 +1,23 @@
+<div
+  [title]="tile.label"
+  class="relative flex items-center justify-center bg-bone select-none shadow-lg"
+  [ngClass]="[
+    sizeClasses[size],
+    ringClass
+  ]"
+>
+  <span
+    class="leading-none"
+    [ngClass]="glyphColor()"
+  >
+    {{ tile.glyph }}
+  </span>
+
+  <span
+    *ngIf="showValue"
+    class="absolute bottom-1 right-1.5 font-mono tabular-nums text-ink/80"
+    [ngClass]="size === 'sm' ? 'text-[10px]' : 'text-xs'"
+  >
+    {{ value }}
+  </span>
+</div>
