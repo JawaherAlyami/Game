@@ -1,5 +1,12 @@
 # HandBettingGame
+A Mahjong-tile based betting game built with Angular. Each round, you bet whether your next hand's total will be higher or lower than your current hand.
 
+1. You are dealt a hand of 5 Mahjong tiles
+2. A **Hand Total** is calculated from your tiles
+3. Bet whether the **next hand** will be **higher** or **lower**
+4. Win **+10 points** for a correct bet
+5. Game ends when the deck is exhausted after 3 reshuffles
+6. Top 5 scores are saved to the leaderboard
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.11.
 
 Below Demo Link:
