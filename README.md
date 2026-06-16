@@ -16,7 +16,7 @@ Below Demo Link:
 ## Handwritten and AI-Assisted
 
 ### Handwritten
-- Game concept and design decisions
+- Game concept and design decisions and so on
 - CSS variables and visual theme (`--navy`, `--coral`, `--cream`, etc.), inline styling
 - Component structure and file organization
 - Routing setup, application bootstrap configuration, and game logic
